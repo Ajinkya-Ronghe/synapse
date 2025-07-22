@@ -1,0 +1,44 @@
+# Configuration file for Synapse.
+#
+# This is a YAML file: see [1] for a quick introduction. Note in particular
+# that *indentation is important*: all the elements of a list or dictionary
+# should have the same indentation.
+#
+# [1] https://docs.ansible.com/ansible/latest/reference_appendices/YAMLSyntax.html
+#
+# For more information on how to configure Synapse, including a complete accounting of
+# each option, go to docs/usage/configuration/config_documentation.md or
+# https://element-hq.github.io/synapse/latest/usage/configuration/config_documentation.html
+server_name: "synapse-production-6d86.up.railway.app"
+pid_file: /home/spandan/homeserver.pid
+listeners:
+  - port: 8008
+    tls: false
+    type: http
+    x_forwarded: true
+    bind_addresses: ['::1', '127.0.0.1']
+    resources:
+      - names: [client, federation]
+        compress: false
+database:
+  name: psycopg2
+  args:
+    user: postgres
+    password: ygMAZfXHjIjxgGCzykDcPhSAWmXhIhpA
+    database: railway
+    host: yamanote.proxy.rlwy.net
+    port: 53477
+    cp_min: 5
+    cp_max: 10
+log_config: "/home/spandan/synapse-production-6d86.up.railway.app.log.config"
+media_store_path: /home/spandan/media_store
+registration_shared_secret: "Ql*a@u*lQAcM@oNv12tYJ_DcCTFjwW+jgimmPrPeZ.ih8o^gY5"
+report_stats: true
+macaroon_secret_key: "&t9Oh9jC*2RH7a^Wd1b4dYo=lU@sN@wLkfUL=ByrlMeoAbjNj;"
+form_secret: "DKw86X+@6tlnBabeQPrp0@&zZvVX53*E+kGfm*MDUYKR=982SP"
+signing_key_path: "/home/spandan/synapse-production-6d86.up.railway.app.signing.key"
+trusted_key_servers:
+  - server_name: "matrix.org"
+
+
+# vim:ft=yaml
