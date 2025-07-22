@@ -2,5 +2,6 @@ FROM matrixdotorg/synapse:latest
 ENV SYNAPSE_SERVER_NAME=synapse-production-6d86.up.railway.app
 ENV SYNAPSE_REPORT_STATS=yes
 EXPOSE 8008
+# Added comment to invalidate cache
 RUN pwd && ls -l
-COPY homeserver.yaml /data/homeserver.yaml
+COPY data/homeserver.yaml /data/homeserver.yaml
