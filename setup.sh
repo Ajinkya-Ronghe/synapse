@@ -11,7 +11,7 @@ echo "deb [signed-by=/usr/share/keyrings/matrix-org-archive-keyring.gpg] https:/
 sudo apt update
 
 echo "🚀 Installing Synapse..."
-sudo apt install -y matrix-synapse
+sudo DEBIAN_FRONTEND=noninteractive apt install -y matrix-synapse
 
 echo "🔐 Registering default admin user..."
 sudo register_new_matrix_user -u admin -p adminpass -a -c /etc/matrix-synapse/homeserver.yaml http://localhost:8008
